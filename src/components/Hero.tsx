@@ -1,17 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion';
-import Lanyard from './animation/Lanyard';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary opacity-5 rounded-full blur-3xl" />
-      </div>
-
+    <section className="min-h-screen flex items-center justify-center  relative overflow-hidden">
       <div className="container relative z-10">
         <div className="flex items-center justify-center">
           <motion.div
@@ -41,7 +34,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <Lanyard gravity={[0, -40, 0]} position={[0, 0, 30]} />
+      {/* <Lanyard gravity={[0, -40, 0]} position={[0, 0, 20]} /> */}
     </section>
   );
 }

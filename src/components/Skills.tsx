@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrollVelocity } from "./common/ScrollVelocity";
+import { ScrollVelocity } from "./ui/ScrollVelocity";
 
 
 
