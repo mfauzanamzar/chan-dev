@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #171717;
-  --color-secondary: #737373;
-  --color-background: #FFFFFF;
+  --color-primary: 23 23 23;
+  --color-secondary: 115 115 115;
+  --color-background: 255 255 255;
 }
 
 @layer base {
   body {
-    @apply bg-[#FFFFFF] text-[#171717] font-sans;
+    @apply bg-[#FFFFFF] text-[#171717] font-inter;
   }
 }
 
@@ -34,24 +34,110 @@
   .card {
     @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6;
   }
+}
 
-  .text-primary {
-    color: var(--color-primary);
+@layer utilities {
+  @keyframes ripple {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
   }
 
-  .text-secondary {
-    color: var(--color-secondary);
+  @keyframes grid {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 
-  .bg-primary {
-    background-color: var(--color-primary);
+  @keyframes shiny-text {
+    0%, 90%, 100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%, 60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
   }
 
-  .bg-secondary {
-    background-color: var(--color-secondary);
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
-  .bg-background {
-    background-color: var(--color-background);
+  @keyframes aurora {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes line-shadow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-ripple {
+    animation: ripple 1s ease-in-out infinite;
+  }
+
+  .animate-grid {
+    animation: grid 15s linear infinite;
+  }
+
+  .animate-shiny-text {
+    animation: shiny-text 8s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 6s ease-in-out infinite;
+  }
+
+  .animate-aurora {
+    animation: aurora 8s ease-in-out infinite;
+  }
+
+  .animate-line-shadow {
+    animation: line-shadow 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes spin-around {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-shimmer-slide {
+    animation: shimmer-slide var(--speed) ease-in-out infinite;
+  }
+
+  .animate-spin-around {
+    animation: spin-around var(--speed) linear infinite;
   }
 }
