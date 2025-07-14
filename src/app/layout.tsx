@@ -1,22 +1,24 @@
 import './globals.css';
-import { ReactNode } from 'react';
-import { Unbounded, Inter } from 'next/font/google';
+import { Outfit, Fira_Mono } from 'next/font/google';
 
-const unbounded = Unbounded({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-unbounded',
-  display: 'swap',
+  variable: '--font-outfit',
 });
 
-const inter = Inter({
+const firaMono = Fira_Mono({
   subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
+  weight: ['400', '500'],
+  variable: '--font-fira-mono',
 });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html className={`${unbounded.variable} ${inter.variable}`} lang="en">
+    <html className={`${outfit.variable} ${firaMono.variable}`} lang="en">
       <body>{children}</body>
     </html>
   );

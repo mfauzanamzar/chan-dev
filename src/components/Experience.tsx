@@ -1,6 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion';
+import { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
@@ -27,55 +31,107 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const cards = gsap.utils.toArray<HTMLElement>('.experience-card');
+    const section = sectionRef.current;
+    const title = titleRef.current;
+
+    if (!section || !title) return;
+
+    // Title pin animation
+    const titlePin = ScrollTrigger.create({
+      trigger: title,
+      start: 'top top+=20',
+      endTrigger: section,
+      end: 'bottom center',
+      pin: true,
+      pinSpacing: false
+    });
+
+    // Clean up function to store all ScrollTriggers
+    const cleanupTriggers: ScrollTrigger[] = [titlePin];
+
+    cards.forEach((card, index) => {
+      // Scale animation
+      const scaleTween = gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: () => 'top bottom-=100',
+          end: () => 'top top-=100',
+          scrub: true,
+          invalidateOnRefresh: true
+        },
+        ease: 'none',
+        scale: () => 1 - (cards.length - index) * 0.025
+      });
+
+      // Pin animation with spacing
+      const pinTrigger = ScrollTrigger.create({
+        trigger: card,
+        start: `top top+=${120 + (60 * index)}`,
+        endTrigger: section,
+        end: 'bottom top-=100', // Extend pin duration
+        pin: true,
+        pinSpacing: false,
+        id: `pin-${index}`,
+        invalidateOnRefresh: true,
+        markers: true,
+      });
+
+      // Add spacing animation
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: `top top+=${120}`,
+          end: 'bottom top-=100', // Match pin end point
+          scrub: true,
+          invalidateOnRefresh: true
+        },
+        y: 60 * index,
+        ease: 'none'
+      });
+
+      cleanupTriggers.push(scaleTween.scrollTrigger!, pinTrigger);
+    });
+
+    return () => {
+      cleanupTriggers.forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className="section bg-background">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Work Experience</h2>
-          <p className="text-secondary max-w-2xl mx-auto">
-            My professional journey and the companies I&apos;ve worked with
+    <section className="py-24" id="experience" ref={sectionRef}>
+      <div className="container mx-auto px-4">
+        <div className="text-center" ref={titleRef}>
+          <h2 className="text-2xl lg:text-4xl font-bold text-primary mb-4">Experience</h2>
+          <p className="text-secondary max-w-xl mx-auto">
+            I've worked with a variety of companies and projects, from startups to large enterprises.
           </p>
-        </motion.div>
-
-        <div className="max-w-3xl mx-auto">
-          {experiences.map((exp, index) => (
-            <motion.div
+        </div>
+        <div className="max-w-3xl mx-auto mt-12">
+          {experiences.map((exp) => (
+            <div
+              className="experience-card bg-white rounded-lg border border-2 border-primary p-6 mb-8"
               key={exp.company}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="relative pl-8 pb-12 last:pb-0"
+              style={{
+                transformOrigin: '50% 0%',
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+              }}
             >
-              {/* Timeline line */}
-              {index !== experiences.length - 1 && (
-                <div className="absolute left-4 top-8 bottom-0 w-0.5 bg-secondary opacity-20" />
-              )}
-              
-              {/* Timeline dot */}
-              <div
-                className="absolute left-0 top-2 w-8 h-8 rounded-full border-4 border-background shadow-md"
-                style={{ backgroundColor: exp.color }}
-              />
-
-              <div className="card">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <h3 className="text-xl font-bold text-primary">{exp.company}</h3>
-                  <span className="text-secondary font-medium">{exp.period}</span>
-                </div>
-                <h4 className="text-lg font-medium mb-2 text-primary">{exp.role}</h4>
-                <p className="text-secondary">{exp.description}</p>
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <h3 className="text-xl font-bold text-primary">{exp.company}</h3>
+                <span className="text-secondary font-medium">{exp.period}</span>
               </div>
-            </motion.div>
+              <h4 className="text-lg font-medium mb-2 text-primary">{exp.role}</h4>
+              <p className="text-secondary">{exp.description}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-} 
+}

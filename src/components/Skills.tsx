@@ -7,9 +7,9 @@ import { ScrollVelocity } from "./ui/ScrollVelocity";
 export default function Skills() {
 
   return (
-    <section className="py-2 bg-background ">
+    <section className="py-2 bg-primary ">
       <ScrollVelocity
-        className="gap-8"
+        className="gap-8 text-white"
         texts={['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Node.js', 'Tailwind CSS', 'Git', 'Redux', 'GraphQL', 'MongoDB']}
         velocity={100}
       />
