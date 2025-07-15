@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: 23 23 23;
-  --color-secondary: 115 115 115;
+  --color-primary: 30 30 30;
+  --color-secondary: 70 70 70;
   --color-background: 255 255 255;
   --radius: 12px;
 }
