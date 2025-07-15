@@ -4,11 +4,15 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import { AnimatedGridPattern } from '@/components/ui/animated-grid-pattern';
 import { cn } from "@/lib/utils";
+import Intro from '@/components/Intro';
 
 
 export default function Home() {
+
+
   return (
     <main>
+
       <div className="fixed top-0 left-0 w-full h-full -z-10">
         <AnimatedGridPattern
           className={cn(
@@ -22,10 +26,13 @@ export default function Home() {
         />
       </div>
       {/* <SplashCursor /> */}
+
+      <Intro />
       <Hero />
       <Skills />
       <Experience />
       <Projects />
+
     </main>
   );
 }
