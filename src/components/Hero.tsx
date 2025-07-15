@@ -1,5 +1,7 @@
 'use client'
 
+import { Terminal, TypingAnimation, AnimatedSpan } from "./ui/Terminal";
+
 export default function Hero() {
   return (
     <section
@@ -8,36 +10,38 @@ export default function Hero() {
     >
       <div className="container relative ">
         <div className="">
-          <div className="flex items-center justify-left">
+          <div className="flex flex-col lg:flex-row items-center gap-10 justify-between">
             <div className="text-left">
-              {/* Overlay with glitch effect, absolutely positioned over heading */}
-
-
-
-              {/* Heading - not animated here, only in overlay */}
-              <div className="mb-4">
-                <h1 className="text-4xl md:text-7xl font-bold text-primary tracking-widest">
+              <h1 className="text-4xl md:text-7xl font-bold text-primary tracking-[0.3em]">
                   MUHAMMAD <br/> FAUZAN<br/> AMZAR
-                </h1>
-              </div>
-
-
-
-              {/* Buttons - no animation */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button
-                  className="text-lg px-8 py-4 bg-primary text-white border border-primary rounded-[8px] font-medium transition-all duration-200 hover:bg-primary hover:scale-105 hover:shadow-lg"
-                >
-                  View My Work
-                </button>
-                <button
-                  className="text-lg px-8 py-4 bg-transparent text-primary border-2 border-primary rounded-[8px] font-medium transition-all duration-200 hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg"
-                  onClick={() => window.open('https://drive.google.com/file/d/1i8A_n6xZdGcNwoa4L3l8Q33qVqPKCOz_/view?usp=sharing', '_blank')}
-                >
-                  Download CV
-                </button>
-              </div>
+              </h1>
             </div>
+
+
+            <Terminal >
+              <TypingAnimation delay={3500}>&gt; skill -v</TypingAnimation>
+              <AnimatedSpan className="text-yellow-400" delay={3700}>
+                React.js
+              </AnimatedSpan>
+              <AnimatedSpan className="text-yellow-400" delay={3900}>
+                Next.js
+              </AnimatedSpan>
+              <AnimatedSpan className="text-yellow-400" delay={4100}>
+                Laravel
+              </AnimatedSpan>
+              <AnimatedSpan className="text-yellow-400" delay={4300}>
+                 PHP
+              </AnimatedSpan>
+              <AnimatedSpan className="text-blue-500 " delay={4500}>
+                Bootstrap
+              </AnimatedSpan>
+              <AnimatedSpan className="text-blue-500" delay={4700}>
+              Tailwind CSS
+              </AnimatedSpan>
+              <TypingAnimation className="text-green-500" delay={5000}>
+                All skills loaded. Ready to build!
+              </TypingAnimation>
+            </Terminal>
           </div>
         </div>
       </div>

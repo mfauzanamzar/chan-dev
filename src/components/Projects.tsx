@@ -1,95 +1,81 @@
 'use client'
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A modern e-commerce platform built with Next.js and Stripe integration.',
-    image: '/projects/ecommerce.jpg',
-    tags: ['Next.js', 'TypeScript', 'Stripe'],
-    link: '#'
+    title: 'Wedera',
+    description: 'A polished digital wedding invitation platform featuring customizable themes for diverse Indonesian cultures, full RSVP and gallery support, countdown timers, music, map integration, and secure payments.',
+    image: '/projects/wedera.jpg',
+    tags: ['Next.js', 'React', 'Wordpress', 'TailwindCSS'],
+    link: 'https://www.wedera.id/'
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates.',
-    image: '/projects/taskmanager.jpg',
-    tags: ['React', 'Firebase', 'Tailwind'],
-    link: '#'
+    title: 'Gatorz XRPL',
+    description: 'A decentralized NFT marketplace on the XRP Ledger offering unique digital collectibles and a fast, gasless experience.',
+    image: '/projects/gatorz.jpg', // Replace with actual project image
+    tags: ['NextJS', 'React', 'TailwindCSS'],
+    link: 'https://www.gatorzxrpl.com/'
   },
-  {
-    title: 'Portfolio Website',
-    description: 'A responsive portfolio website showcasing creative work and projects.',
-    image: '/projects/portfolio.jpg',
-    tags: ['React', 'Framer Motion', 'GSAP'],
-    link: '#'
-  }
 ];
 
 export default function Projects() {
   return (
-    <section className="section bg-background">
+    <section className="section ">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Featured Projects</h2>
           <p className="text-secondary max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills and experience
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
+              className="group hover:scale-[1.03] transition-transform duration-300"
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group"
+              style={{ willChange: 'transform, opacity' }}
             >
-              <div className="card">
+              <div className="card shadow-xl hover:shadow-2xl transition-shadow duration-300">
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                   <Image
-                    src={project.image}
                     alt={project.title}
-                    fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    fill
+                    src={project.image}
                   />
                 </div>
-                
+
                 <h3 className="text-xl font-bold mb-2 text-primary">{project.title}</h3>
                 <p className="text-secondary mb-4">{project.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (
                     <span
-                      key={tag}
                       className="px-3 py-1 text-sm rounded-full bg-background text-primary border border-secondary/20"
+                      key={tag}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                
-                <a
-                  href={project.link}
-                  className="inline-block text-primary font-medium hover:text-secondary transition-colors"
+
+                <button
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white font-medium rounded-lg shadow hover:bg-secondary hover:text-primary transition-colors duration-200"
+                  onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
+                  type="button"
                 >
-                  View Details →
-                </a>
+                  View Details
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 6.75L21 12m0 0l-3.75 5.25M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-} 
+}
