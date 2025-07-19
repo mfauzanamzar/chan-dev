@@ -15,6 +15,7 @@ import {
   SiTailwindcss, SiFigma
 } from 'react-icons/si';
 import { Dock, DockLink } from "./ui/Dock";
+import { ThemeToggle } from "./ui/ThemeToggle";
 
 const techStack = [
   { name: 'React', icon: FaReact, color: 'text-blue-500' },
@@ -30,6 +31,9 @@ const techStack = [
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden ">
+      {/* Theme Toggle */}
+      <ThemeToggle />
+
       <div className="container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Left Side - Name and Description */}
         <div>
@@ -40,16 +44,16 @@ export default function Hero() {
           >
             <Dock>
               <DockLink href="https://instagram.com/mfauzanamzar" label="Follow me on Instagram">
-                <FaInstagram size={40}/>
+                <FaInstagram className="text-primary" size={40} />
               </DockLink>
               <DockLink href="https://linkedin.com/in/mfauzanamzar/" label="Connect with me on LinkedIn">
-                <FaLinkedin size={40}/>
+                <FaLinkedin className="text-primary" size={40} />
               </DockLink>
               <DockLink href="https://wa.me/6281248615822" label="Message me on WhatsApp">
-                <FaWhatsapp size={40}/>
+                <FaWhatsapp className="text-primary" size={40} />
               </DockLink>
               <DockLink href="mailto:mfauzanamzar@gmail.com" label="Send me an email">
-                <FaEnvelope size={40}/>
+                <FaEnvelope className="text-primary" size={40} />
               </DockLink>
             </Dock>
           </motion.div>

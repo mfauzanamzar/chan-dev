@@ -44,7 +44,7 @@ export default function Projects() {
               key={project.title}
             >
               {/* Project Card */}
-              <div className="relative overflow-hidden rounded-2xl shadow-[4px_4px_0_rgba(0,0,0,1)] transition-all border-2 border-primary h-full flex flex-col p-2 lg:p-4">
+              <div className="relative overflow-hidden rounded-2xl shadow-[4px_4px_0_rgba(0,0,0,1)] transition-all border-2 border-primary h-full flex flex-col p-2 lg:p-4 bg-white ">
 
                 {/* Image Container */}
                 <div className="relative overflow-hidden rounded-xl border-2 border-primary aspect-video">
@@ -63,7 +63,7 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 lg:p-8 bg-white flex-grow flex flex-col">
+                <div className="p-6 lg:p-8 flex-grow flex flex-col">
                   {/* Title */}
                   <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-primary">
                     {project.title}

@@ -6,12 +6,20 @@
   --color-primary: 30 30 30;
   --color-secondary: 70 70 70;
   --color-background: 255 255 255;
+  --color-white: 255 255 255;
   --radius: 12px;
+}
+
+.dark {
+  --color-primary: 255 255 255;
+  --color-secondary: 200 200 200;
+  --color-background: 15 15 15;
+  --color-white: 30 30 30;
 }
 
 @layer base {
   body {
-    @apply bg-white text-[#171717];
+    @apply bg-white text-primary dark:bg-[#0f0f0f] dark:text-white transition-colors duration-300;
     font-family: 'Fira Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
   }
 }
