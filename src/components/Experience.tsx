@@ -19,22 +19,30 @@ const experiences = [
     ],
   },
   {
-    company: 'Digital Innovations',
-    role: 'Frontend Developer',
-    period: '2020 - 2022',
-    description: 'Developed responsive web applications and implemented modern UI/UX practices.',
+    company: 'Logique Digital Indonesia',
+    role: 'Intern Frontend Developer',
+    period: 'Jul 2022 - Jan 2023',
+    description: [
+      'Assisted in the development of responsive web applications for products and projects.',
+      'Collaborated in team meetings to brainstorm and refine project ideas.',
+      'Learned to apply best practices in coding and design.'
+    ],
   },
   {
-    company: 'WebCraft Studio',
-    role: 'Junior Developer',
-    period: '2019 - 2020',
-    description: 'Built and maintained client websites using HTML, CSS, and JavaScript.',
+    company: 'BMKA Salman ITB',
+    role: 'Volunteer Frontend Developer',
+    period: 'Aug 2021 - Jan 2022',
+    description: [
+      'Implemented frontend features using React.js, ensuring seamless integration with Zustand for state management.',
+      'Developed and utilized reusable components and utility helpers to maintain code consistency and scalability.',
+      'Applied global CSS variables and followed best practices to match the UI layout precisely and ensure high responsiveness across devices.'
+    ],
   }
 ];
 
 export default function Experience() {
   return (
-    <section className="pt-24" id="experience">
+    <section className="pt-10 lg:pt-24" id="experience">
       <div className="container mx-auto px-4">
         <div className="text-center">
           <h2 className="text-2xl lg:text-4xl font-bold text-primary mb-4">EXPERIENCE</h2>
@@ -42,11 +50,11 @@ export default function Experience() {
             I've worked with a variety of companies and projects, from startups to large enterprises.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto mt-12">
-          {experiences.map((exp) => (
+        <div className="max-w-3xl mx-auto mt-8 lg:mt-12">
+          {experiences.map((exp, index) => (
             <div
-              className="experience-card bg-white rounded-lg border border-2 border-primary p-6 mb-8"
-              key={exp.company}
+              className="experience-card bg-white rounded-lg border-2 shadow-[4px_4px_0_rgba(0,0,0,1)] shad border-primary p-6 mb-8"
+              key={index}
               style={{
                 transformOrigin: '50% 0%',
                 willChange: 'transform',
