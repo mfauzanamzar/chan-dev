@@ -9,7 +9,7 @@ const experiences = [
   {
     company: 'Logique Digital Indonesia',
     role: 'Frontend Developer',
-    period: 'Jan 2023 - Juli 2025',
+    period: 'Jan 2023 - Present',
     description: [
       'Built and maintained highly responsive, fast-loading web interfaces using React.js and Next.js as primary frameworks.',
       'Collaborated closely with QA, backend, product, and design teams to deliver features from concept to deployment.',

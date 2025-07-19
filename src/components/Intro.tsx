@@ -26,7 +26,7 @@ const Intro: React.FC = () => {
         {showOverlay && (
           <motion.div
             animate={{ opacity: 1 }}
-            className="h-screen fixed inset-0 z-50 bg-primary flex items-center justify-center w-full "
+            className="h-screen fixed inset-0 z-50 bg-[#0f0f0f] flex items-center justify-center w-full "
             exit={{ opacity: 0, y: 0 }}
             initial={{ opacity: 1, y: 0 }}
             key="intro-overlay"
