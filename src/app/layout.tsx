@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'FauzanAmzar - Frontend Developer & UI/UX Designer',
+    title: 'FauzanAmzar - Frontend Developer',
     description: 'Professional frontend developer specializing in React, Next.js, TypeScript, and modern web technologies. Creating beautiful, responsive, and user-friendly web applications.',
     url: 'https://fauzanamzar.vercel.app/', // Replace with your actual domain
     siteName: 'FauzanAmzar Portfolio',
