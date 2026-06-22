@@ -8,7 +8,7 @@ const projects = [
     description: 'A polished digital wedding invitation platform featuring customizable themes for diverse Indonesian cultures, full RSVP and gallery support, countdown timers, music, map integration.',
     image: '/assets/thumbnail-wedera.png',
     tags: ['Next.js', 'React', 'Wordpress', 'TailwindCSS'],
-    link: 'https://www.wedera.id/',
+    link: 'https://wedera-lp.vercel.app/',
     year: '2025'
   },
   {
